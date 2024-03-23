@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'KHInterference';
+    src: url('./font/KHInterference/KHInterference-Regular.woff2') format('woff2');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +23,7 @@ body {
     border: 2px solid #f4f4f5;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 100px rgba(0, 0, 0, 0.2);
 }
 
 #affichage {
@@ -33,20 +38,30 @@ body {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-bottom: 10px;
+    font-family: KHInterference, sans-serif;
+    font-weight: lighter;
 }
 
 button {
-    border: none;
     background-color: transparent;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     font-size: 20px;
     border-radius: 9999px;
+    transition: all 0.1s;
+    border: 1px solid #e1e1e1;
 }
 
 button:hover {
     cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+    transition: all 0.1s;
 }
 
 .span-2 {
     grid-column: span 2;
+    background-color: #f4f4f5;
 }

@@ -33,37 +33,53 @@ function clear() {
 
 function calcul() {
     if (output.innerText === '') return
+
     let split = output.innerHTML.split(OperationCalcul)
 
-    let nombre1 = parseFloat(split[0])
-    let nombre2 = parseFloat(split[1])
+    if (OperationCalcul === '%') {
 
-    if (isNaN(nombre1) || isNaN(nombre2)) return
+        let nombre1 = parseFloat(split[0]);
 
-    let moncalcul;
+        if (isNaN(nombre1)) return;
 
-    switch (OperationCalcul) {
-        case '+':
-            moncalcul = nombre1 + nombre2
-            break
-        case '-':
-            moncalcul = nombre1 - nombre2
-            break
-        case 'x':
-            moncalcul = nombre1 * nombre2
-            break
-        case '/':
-            moncalcul = nombre1 / nombre2
-            break
-        case '%':
-            moncalcul = nombre1 / 100
-            break
-        default:
-            return
+        let moncalcul = nombre1 / 100;
+
+        output.innerText = moncalcul;
+        OperationCalcul = undefined;
+        premier = true; // Réinitialiser le statut premier pour permettre de continuer le calcul après le pourcentage
+
+    } else {
+        split = output.innerHTML.split(OperationCalcul);
+
+        let nombre1 = parseFloat(split[0]);
+        let nombre2 = parseFloat(split[1]);
+
+        if (isNaN(nombre1) || isNaN(nombre2)) return;
+
+        let moncalcul;
+
+        switch (OperationCalcul) {
+            case '+':
+                moncalcul = nombre1 + nombre2;
+                break;
+            case '-':
+                moncalcul = nombre1 - nombre2;
+                break;
+            case 'x':
+                moncalcul = nombre1 * nombre2;
+                break;
+            case '/':
+                moncalcul = nombre1 / nombre2;
+                break;
+            default:
+                return;
+        }
+        output.innerText = moncalcul;
+        OperationCalcul = undefined;
+        premier = true; // Réinitialiser le statut premier pour permettre de continuer le calcul après le résultat
+
     }
 
-    output.innerText = moncalcul
-    OperationCalcul = undefined
 }
 
 clearButton.addEventListener('click', () => {
